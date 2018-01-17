@@ -1,28 +1,27 @@
 
 1) Explain why do we sometimes want to use setImmediate instead of setTimeout?
 
-
 Whenever we use setTimeout, it is like calling the function, after the delay that has been set has finished. 
 During the execution the function that has been called is put in the queue and not executed immediately, so 
 that it has to be executed after all the executing and currently queued event handlers finish first.
 
-Whereas, setImmediate when used, is similar in this regard except that it doesn't use queue of functions. 
-It checks queue of I/O eventhandlers. If all I/O events in the current snapshot are processed, it executes 
-the callback. It queues them immediately after the last I/O handler somewhat like process.nextTick. So it is 
-faster compared to setTimeout.
+Whereas, setImmediate when used, is similar in this regard except that it doesn't use queue of functions. It 
+checks queue of I/O eventhandlers. If all I/O events in the current snapshot are processed, it executes the 
+callback. It queues them immediately after the last I/O handler somewhat like process.nextTick. So it is faster 
+compared to setTimeout.
 
 *****************************************************************************************************************
 
 2) Explain the difference between process.nextTick and setImmediate?
 
-
 When process.nextTick is used, all the callbacks are processed in the nextTick queue after the current operation 
 completes and before the event loop continues, and that means it runs before any additional I/O events or timers 
-fire. Whereas, setImmediate when used, doesn't use queue of functions. It checks queue of I/O eventhandlers. If 
-all I/O events in the current snapshot are processed, it executes the callback.So in a case where you're trying 
-to break up a long running, CPU-bound job using recursion, you would now want to use setImmediate rather than 
-process.nextTick to queue the next iteration as otherwise any I/O event callbacks wouldn't get the chance to run 
-between iterations.
+fire. 
+
+Whereas, setImmediate when used, doesn't use queue of functions. It checks queue of I/O eventhandlers. If all I/O 
+events in the current snapshot are processed, it executes the callback.So in a case where you're trying to break 
+up a long running, CPU-bound job using recursion, you would now want to use setImmediate rather than process.nextTick 
+to queue the next iteration as otherwise any I/O event callbacks wouldn't get the chance to run between iterations.
 
 *****************************************************************************************************************
 
