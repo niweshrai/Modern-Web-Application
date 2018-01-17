@@ -1,9 +1,9 @@
 function Musician(name) {
-		this.name  = name;
+	this.name  = name;
 }
  
  Musician.prototype.play = function(piece){
- 		console.log(this.name + " is now playing " +piece)
+ 	console.log(this.name + " is now playing " +piece)
  }
  
 let Violinist = new Musician("Harold");

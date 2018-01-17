@@ -1,5 +1,5 @@
 const item = {
-		"name" : "Biscuits",
+	"name" : "Biscuits",
     "type" : "regular",
     "category" : "food",
     "price" : 2
