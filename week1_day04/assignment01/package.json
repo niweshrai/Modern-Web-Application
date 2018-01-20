@@ -1,0 +1,15 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "assignment1",
+  "main": "serverapp.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node serverapp.js"
+  },
+  "author": "Niwesh Chandra Rai",
+  "license": "ISC",
+  "dependencies": {
+    "rx": "^4.1.0"
+  }
+}
