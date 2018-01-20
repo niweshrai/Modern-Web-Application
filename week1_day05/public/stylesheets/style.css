@@ -1,0 +1,21 @@
+body {
+  padding: 1px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: rgb(58, 169, 212);
+}
+
+td {
+    border: 2px;
+    border-spacing: 1 !important;
+    padding: 10px;
+}
+
+th {
+    border: 1px solid #000;
+    padding: 10px;
+    background: rgb(12, 124, 175);
+    color: #fff;
+}
