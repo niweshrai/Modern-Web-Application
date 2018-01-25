@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var secret = require('./routes/secret');
+var location = require('./routes/location');
+
+var db = require('./util/db');
 
 var app = express();
 
@@ -24,18 +26,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/secret', secret);
 app.use('/users', users);
+app.use('/location', location);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -44,5 +46,15 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(8000);
-module.exports = app;
+
+// Connect to Mongo on start
+db.connect('mongodb://localhost:27017/geolocation', function(err) {
+  	if (err) {
+    	console.log('Unable to connect to MongoDB...')
+    	process.exit(1)
+  	} else {
+    	app.listen(8080, function() {
+      		console.log('Listening on port 8080...')
+    	})
+  	}
+});
