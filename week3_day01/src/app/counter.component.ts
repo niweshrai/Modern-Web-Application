@@ -14,7 +14,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CounterComponent {
 
-  @Input() counterValue: number = 0;
+  @Input() counterValue: number;
 
   @Output() counterChange = new EventEmitter<number>();
 

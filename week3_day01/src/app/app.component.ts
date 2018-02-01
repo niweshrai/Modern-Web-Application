@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   componentCounterValue?:string;
-  counterValue: number = 0;
+  counterValue: number = 1;
 
   counterChange(counter: number){
     this.componentCounterValue = "Component Counter Value = "+counter;
